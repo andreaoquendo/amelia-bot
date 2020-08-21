@@ -1,11 +1,11 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-const PREFIX = "?";
+const PREFIX = "/";
 const version = '1.0';
 const m_channel = '745824572477145198';
 const amelia_id = '745753815374102600';
 const master_id = '529855777645527073';
-const REPORT_PREFIX = "-";
+const REPORT_PREFIX = "%";
 
 
 const check_permissions = (role) => {role.permissions.has('KICK_MEMBERS') ||
@@ -19,6 +19,37 @@ bot.on('ready', ()=>{
 
 })
 
+//report processing
+bot.on('message', message =>{
+
+    if(message.channel.id === rules_channel){
+        let master = bot.users.cache.get(master_id);
+        let args = message.content.substring(REPORT_PREFIX.length).split(" ");
+        if(message.author.id != amelia_id){
+            if (!message.content.startsWith(REPORT_PREFIX) || 
+            !message.mentions.users.size ||
+            !args[0] || !args[1] || !args[2]){
+                            
+                message.channel.send('Please, use the right format.')
+                .then(msg => {msg.delete({timeout: 3000})})
+                .then(message.delete({timeout: 3000}));
+
+            }
+            else{
+                message.author.send('Your report will be processed.');
+                master.send(message.author.id + ' sent a report:\n' + message.content);
+                message.delete({timeout:3000})
+            }
+        }
+        else return;
+    }
+    else{
+        if(message.content.startsWith('/report')){
+            message.reply(' reports are handled in #rules.');
+        }
+    }
+})
+
 //welcome message
 bot.on('guildMemberAdd', (member) =>{
 
@@ -27,10 +58,7 @@ bot.on('guildMemberAdd', (member) =>{
 
     const welcome_msg = new Discord.MessageEmbed()
             .setTitle('Welcome to the server!')
-            .setDescription(`${member}, be welcome to **Webtoon(ers)**, a server made for people 
-                            who love webtoons to find and discuss webtoon with those who love it too, 
-                            please introduce yourself in introductions, set your role in #set-roles,
-                             and don't forget to read the rules. Finally, have fun!`)
+            .setDescription(`${member}, be welcome to **Webtoon(ers)**, a server made for people who love webtoons to find and discuss webtoon with those who love it too, please introduce yourself in #introductions, set your role in #set-roles, and don't forget to read the rules. \nAmelia bot is here to help you (her prefix is /, but for reports, is %).\nFinally, **have fun!**`)
             .setColor(0xBE58DE)
             .setImage('https://i.pinimg.com/originals/9b/5a/ea/9b5aea26a167437a7e4ddde5b44c0e40.gif');
              
@@ -40,7 +68,6 @@ bot.on('guildMemberAdd', (member) =>{
 //set role handler
 bot.on('message', message =>{
 
-    //make list of roles and test them
     if(message.channel.id === m_channel && message.author.id != amelia_id){
         if(message.content == 'set-role'){
             message.reply(' of course my dear. What role do you want? \n We have: true beauty, sweet home, lookism, yumi cells, space boy and spirit fingers. \nPlease be careful, just digit the name of the webtoon **in english**.');
@@ -78,9 +105,9 @@ bot.on('message', message =>{
     }
 });
 
+//commands handler
 bot.on('message', message=>{
 
-        //commands
         if(message.author.id == '717791990653386752')
             message.channel.send("la vem a carol dnv");
 
@@ -146,6 +173,10 @@ bot.on('message', message=>{
                 
                 break;
         }
-})
+});
+
+
+
+
 
 bot.login(process.env.token);
