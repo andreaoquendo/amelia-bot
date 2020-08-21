@@ -105,6 +105,7 @@ bot.on('message', message =>{
 //commands handler
 bot.on('message', message=>{
 
+        if(message.channel.id === rules_channel) return;
         let args = message.content.substring(PREFIX.length).split(" ");
         if (!message.content.startsWith(PREFIX)) return;
         if (message.channel.id == m_channel && message.author.id != master_id){
