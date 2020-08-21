@@ -44,11 +44,7 @@ bot.on('message', message =>{
         }
         else return;
     }
-    else{
-        if(message.content.startsWith('/report')){
-            message.reply(' reports are handled in #rules.');
-        }
-    }
+    else return;
 })
 
 //welcome message
@@ -109,9 +105,6 @@ bot.on('message', message =>{
 //commands handler
 bot.on('message', message=>{
 
-        if(message.author.id == '717791990653386752')
-            message.channel.send("la vem a carol dnv");
-
         let args = message.content.substring(PREFIX.length).split(" ");
         if (!message.content.startsWith(PREFIX)) return;
         if (message.channel.id == m_channel && message.author.id != master_id){
@@ -148,30 +141,17 @@ bot.on('message', message=>{
                 break;
             case 'help':
                 if(!args[1])
-                    message.reply(' I am here to help you. Please use ?help and one of the following commands\:\n *bots* - and i will explain what my siblings do; \n *roles* - if you want to know more about roles; \n *report* - for more info about reporting people');
+                    message.reply(' I am here to help you. Please use ?help and one of the following commands\:\n*bots* - and i will explain what my siblings do; \n*roles* - if you want to know more about roles; \n*report* - for more info about reporting people');
                 switch(args[1]){
                     case 'bots':
-                        message.reply('I am still alone and this universe. Just waiting til master create some siblings. I really wanted a sister to talk about whats been happening these days...');
+                        message.reply(' jem is my brother. I SAID i wanted a SISTER. He does nothing at all, just keeps playing ping pong');
                         break;
                     case 'roles':
                         message.reply('roles are meant for you to find your co-fellows to talk about your favorites webtoons, since there is a lot of webtoons, we just make roles for top webtoons, genres and a general discovery webtoons, if you like yo read webtoons after rising.');
                         break;
                     case 'report':
-                        message.reply('if youve seen someone break the rules, you need to report them. The !report -user -info , will send the message immediately to master, so she can see if we need to kick the user from this server, it will be processed in less than 24hours. Replace user by the number code and info by the number of the rule they broke.');
+                        message.reply('if youve seen someone break the rules, you need to report them. Go to #rules, there is explained how we handle this.');
                 }
-                break;
-            case 'oi':
-                message.reply('oi na casa da sya mae!!!!???!!!');
-                break;
-            case 'report':
-                if(!args[1] || !args[1].startsWith(REPORT_PREFIX)){
-                    message.channel.send('If you need more info about how to report, please type !help report.');        
-                }
-                else{
-                    message.channel.send('User has been reported, master will warn you.');
-                }
-                    
-                
                 break;
         }
 });
