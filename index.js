@@ -5,6 +5,7 @@ const version = '1.0';
 const m_channel = '745824572477145198';
 const amelia_id = '745753815374102600';
 const master_id = '529855777645527073';
+const rules_channel = '746081382836600928';
 const REPORT_PREFIX = "%";
 
 
