@@ -1,17 +1,11 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-const PREFIX = "!";
+const PREFIX = "?";
 const version = '1.0';
 const m_channel = '745824572477145198';
 const amelia_id = '745753815374102600';
+const master_id = '529855777645527073';
 const REPORT_PREFIX = "-";
-require('dotenv-flow').config();
-const config = {
-    token: process.env.token,
-    owner: process.env.owner,
-    prefix: process.env.prefix
-};
-master_id = config.owner;
 
 
 const check_permissions = (role) => {role.permissions.has('KICK_MEMBERS') ||
@@ -19,15 +13,6 @@ role.permissions.has('BAN_MEMBERS') ||
 role.permissions.has('MANAGE_GUILD') ||
 role.permissions.has('MANAGE_CHANNELS') ||
 role.permissions.has('ADMINISTRATOR')};
-
-function contains(a, obj) {
-    for (var i = 0; i < a.length; i++) {
-        if (a[i] === obj) {
-            return true;
-        }
-    }
-    return false;
-}
 
 bot.on('ready', ()=>{
     console.log('Amelia is online!')
@@ -58,7 +43,7 @@ bot.on('message', message =>{
     //make list of roles and test them
     if(message.channel.id === m_channel && message.author.id != amelia_id){
         if(message.content == 'set-role'){
-            message.reply(' of course my dear. What role do you want? \n We have: true beauty, sweet home and lookism. \nPlease be careful, just digit the name of the webtoon **in english**.');
+            message.reply(' of course my dear. What role do you want? \n We have: true beauty, sweet home, lookism, yumi cells, space boy and spirit fingers. \nPlease be careful, just digit the name of the webtoon **in english**.');
             return;
         }
         else if(message.content.startsWith(PREFIX)){
@@ -96,6 +81,9 @@ bot.on('message', message =>{
 bot.on('message', message=>{
 
         //commands
+        if(message.author.id == '717791990653386752')
+            message.channel.send("la vem a carol dnv");
+
         let args = message.content.substring(PREFIX.length).split(" ");
         if (!message.content.startsWith(PREFIX)) return;
         if (message.channel.id == m_channel && message.author.id != master_id){
@@ -103,7 +91,7 @@ bot.on('message', message=>{
             .then(msg => {msg.delete({timeout: 3000})})
             .then(message.delete({timeout: 3000}));
             return;
-        } 
+        }
 
         switch(args[0]){
             case 'ping':
@@ -112,7 +100,10 @@ bot.on('message', message=>{
             case 'info':
                 if(args[1] == 'version'){
                     message.channel.send(version);
-                }else{
+                }else if(args[1] == 'git'){
+                    message.channel.send('https://github.com/andreaoquendo/amelia-bot');
+                }
+                else{
                     message.channel.send('Invalid request.');
                 }
                 break;
@@ -129,7 +120,7 @@ bot.on('message', message=>{
                 break;
             case 'help':
                 if(!args[1])
-                    message.reply(' I am here to help you. Please use !help and one of the following commands\:\n *bots* - and i will explain what my siblings do; \n *roles* - if you want to know more about roles; \n *report* - for more info about reporting people');
+                    message.reply(' I am here to help you. Please use ?help and one of the following commands\:\n *bots* - and i will explain what my siblings do; \n *roles* - if you want to know more about roles; \n *report* - for more info about reporting people');
                 switch(args[1]){
                     case 'bots':
                         message.reply('I am still alone and this universe. Just waiting til master create some siblings. I really wanted a sister to talk about whats been happening these days...');
@@ -140,6 +131,9 @@ bot.on('message', message=>{
                     case 'report':
                         message.reply('if youve seen someone break the rules, you need to report them. The !report -user -info , will send the message immediately to master, so she can see if we need to kick the user from this server, it will be processed in less than 24hours. Replace user by the number code and info by the number of the rule they broke.');
                 }
+                break;
+            case 'oi':
+                message.reply('oi na casa da sya mae!!!!???!!!');
                 break;
             case 'report':
                 if(!args[1] || !args[1].startsWith(REPORT_PREFIX)){
@@ -154,4 +148,4 @@ bot.on('message', message=>{
         }
 })
 
-bot.login(config.token);
+bot.login(process.env.token);
