@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-const PREFIX = "/";
+const PREFIX = "?";
 const version = '1.0';
 const m_channel = '745824572477145198';
 const amelia_id = '745753815374102600';
@@ -55,7 +55,7 @@ bot.on('guildMemberAdd', (member) =>{
 
     const welcome_msg = new Discord.MessageEmbed()
             .setTitle('Welcome to the server!')
-            .setDescription(`${member}, be welcome to **Webtoon(ers)**, a server made for people who love webtoons to find and discuss webtoon with those who love it too, please introduce yourself in #introductions, set your role in #set-roles, and don't forget to read the rules. \nAmelia bot is here to help you (her prefix is /, but for reports, is %).\nFinally, **have fun!**`)
+            .setDescription(`${member}, be welcome to **Webtoon(ers)**, a server made for people who love webtoons to find and discuss webtoon with those who love it too, please introduce yourself in #introductions, set your role in #set-roles, and don't forget to read the rules. \nAmelia bot is here to help you (her prefix is ?, but for reports, is %).\nFinally, **have fun!**`)
             .setColor(0xBE58DE)
             .setImage('https://i.pinimg.com/originals/9b/5a/ea/9b5aea26a167437a7e4ddde5b44c0e40.gif');
              
