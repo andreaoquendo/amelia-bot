@@ -81,7 +81,7 @@ bot.on('message', message =>{
                     message.reply('you already have this role.');
                     return;
                 }
-                if (check_permissions(role)){
+                if (check_permissions(role) || role.id === '746580628363018400'){
                     message.reply('sorry, you cannot add yourself this permission.');
                 }
                 else{
