@@ -82,7 +82,9 @@ bot.on('message', message =>{
                     return;
                 }
                 if (check_permissions(role) || role.id === '746580628363018400'){
-                    message.reply('sorry, you cannot add yourself this permission.');
+                    message.reply('sorry, you cannot add yourself this role.')
+                    .then(msg => {msg.delete({timeout: 4000})})
+                    .then(message.delete({timeout: 3000}));
                 }
                 else{
                     message.member.roles.add(role)
