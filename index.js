@@ -78,7 +78,8 @@ bot.on('message', message =>{
             let role = cache.find(role => role.name.toLowerCase() === message.content.toLowerCase());
             if(role){
                 if(message.member.roles.cache.has(role.id)){
-                    message.reply('you already have this role.');
+                    message.member.roles.remove(role);
+                    message.reply('you were removed from this role.');
                     return;
                 }
                 if (check_permissions(role) || role.id === '746580628363018400'){
