@@ -55,7 +55,7 @@ bot.on('guildMemberAdd', (member) =>{
 
     const welcome_msg = new Discord.MessageEmbed()
             .setTitle('Welcome to the server!')
-            .setDescription(`${member}, be welcome to **Webtoon(ers)**, a server made for people who love webtoons. As a newcomer, please introduce yourself in #introductions, set your role in #set-roles, and don't forget to read the rules. If you want more info about an specific channel, please read it's pinned message.\nWe have 2 exclusive bots here: Amelia and Jem, amelia's prefix is "?", and some of her commands are in #general's pinned message; Jem just gives out recommendations, so just type 'jem recommendation' and he will give you one heh.n\nFinally, **have fun!**`)
+            .setDescription(`${member}, be welcome to **Webtoon(ers)**, a server made for people who love webtoons. As a newcomer, please introduce yourself in #introductions, set your role in #set-roles, and don't forget to read the rules. If you want more info about an specific channel, please read it's pinned message.\nWe have an exclusive bots here: Amelia, her prefix is "?" and some of her commands are in #general's pinned message.\nFinally, **have fun!**`)
             .setColor(0xBE58DE)
             .setImage('https://i.pinimg.com/originals/9b/5a/ea/9b5aea26a167437a7e4ddde5b44c0e40.gif');
              
@@ -148,10 +148,10 @@ bot.on('message', message=>{
                     message.reply(' I am here to help you. Please use ?help and one of the following commands\:\n*bots* - and i will explain what my siblings do; \n*roles* - if you want to know more about roles; \n*report* - for more info about reporting people');
                 switch(args[1]){
                     case 'bots':
-                        message.reply(" my brother is **jem**, and he gives people recommendations (just type 'jem recommendation'), **rythm bot** is a music bot and he takes commands just in #music-bot channel, **dyno** bot just takes master commands.");
+                        message.reply("*rythm bot** is a music bot and he takes commands just in #music-bot channel\n");
                         break;
                     case 'roles':
-                        message.reply('roles are meant for you to find your co-fellows, since there is a lot of webtoons, we just make roles for top webtoons, genres and a general discovery webtoons, if you want a new role to be created, send it in #request-role channel.');
+                        message.reply('roles are meant for you to find your co-fellows, we have roles for each genre and a discovery role, if you want a new role to be created, send it in #suggestions channel.');
                         break;
                     case 'report':
                         message.reply('if youve seen someone break the rules, you need to report them. #rules is the channel that handles reports. Dont worry, they keep your report anon.');
