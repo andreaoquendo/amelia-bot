@@ -55,7 +55,7 @@ bot.on('guildMemberAdd', (member) =>{
 
     const welcome_msg = new Discord.MessageEmbed()
             .setTitle('Welcome to the server!')
-            .setDescription(`${member}, be welcome to **Webtoon(ers)**, a server made for people who love webtoons. As a newcomer, please introduce yourself in #introductions, set your role in #set-roles, and don't forget to read the rules. If you want more info about an specific channel, please read it's pinned message.\nWe have an exclusive bots here: Amelia, her prefix is "?" and some of her commands are in #general's pinned message.\nIf you're a creator/artist, you can share your creations in artist alley category.\nFinally, **have fun!**`)
+            .setDescription(`${member}, be welcome to **Webtoon(ers)**, a server made for people who love webtoons. As a newcomer, please introduce yourself in #introductions, set your role in #self-roles, and don't forget to read the rules. If you want more info about an specific channel, please read it's pinned message.\nWe have an exclusive bots here: Amelia, her prefix is "?" and some of her commands are in #general's pinned message.\nIf you're a creator/artist, you can share your creations in artist alley category.\nFinally, **have fun!**`)
             .setColor(0xBE58DE)
             .setImage('https://i.pinimg.com/originals/9b/5a/ea/9b5aea26a167437a7e4ddde5b44c0e40.gif');
              
