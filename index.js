@@ -7,6 +7,7 @@ const amelia_id = '745753815374102600';
 const master_id = '529855777645527073';
 const rules_channel = '746081382836600928';
 const REPORT_PREFIX = "%";
+const intros_channel ="746081028036100227";
 
 
 const check_permissions = (role) => {role.permissions.has('KICK_MEMBERS') ||
@@ -161,8 +162,13 @@ bot.on('message', message=>{
         }
 });
 
+client.on('message', message =>{
 
+    if(message.channel.id === intros_channel){
+        message.react('💖');
+    }
 
+})
 
 
 bot.login(process.env.token);
