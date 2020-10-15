@@ -162,7 +162,7 @@ bot.on('message', message=>{
         }
 });
 
-client.on('message', message =>{
+bot.on('message', message =>{
 
     if(message.channel.id === intros_channel){
         message.react('💖');
